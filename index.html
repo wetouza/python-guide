@@ -76,8 +76,8 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#backend">Backend</a></li>
                 <li><a href="#courses">Курсы</a></li>
-                <li><a href="#terms">Термины</a></li>
                 <li><a href="#practice">Практика</a></li>
                 <li><a href="#english">English</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -92,6 +92,27 @@
             </button>
         </div>
     </nav>
+
+    <!-- Progress Tracker (Fixed) -->
+    <div class="progress-tracker" id="progressTracker">
+        <div class="progress-content">
+            <div class="progress-info">
+                <span class="progress-icon">🎯</span>
+                <span class="progress-text">Прогресс обучения: <strong id="progressPercent">0%</strong></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-stats">
+                <span id="completedCount">0</span>/<span id="totalCount">0</span> целей
+            </div>
+            <button class="progress-sync-btn" id="syncBtn" title="Синхронизировано">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m0 0a9 9 0 009 9m-9-9a9 9 0 019-9"/>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -223,7 +244,7 @@
             </div>
             
             <div class="roadmap-timeline">
-                <div class="roadmap-item">
+                <div class="roadmap-item" data-step="1">
                     <div class="roadmap-marker">
                         <span>1</span>
                     </div>
@@ -244,9 +265,36 @@
                             <span class="topic">Строки и f-strings</span>
                             <span class="topic">Input/Output</span>
                         </div>
-                        <div class="roadmap-goal">
-                            <strong>🎯 Цель:</strong> Написать калькулятор, игру "Угадай число", список задач
+                        
+                        <div class="roadmap-goals">
+                            <h4>🎯 Цели:</h4>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="1-1">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Установить Python и VS Code</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="1-2">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Написать "Hello World"</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="1-3">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Создать калькулятор</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="1-4">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Игра "Угадай число"</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="1-5">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Решить 30 задач на Stepik</span>
+                            </label>
                         </div>
+                        
                         <div class="roadmap-resources">
                             <a href="https://pythontutor.ru/" target="_blank" class="resource-link">Python Tutor</a>
                             <a href="https://stepik.org/course/58852" target="_blank" class="resource-link">Stepik: Поколение Python</a>
@@ -254,7 +302,7 @@
                     </div>
                 </div>
                 
-                <div class="roadmap-item">
+                <div class="roadmap-item" data-step="2">
                     <div class="roadmap-marker">
                         <span>2</span>
                     </div>
@@ -275,9 +323,31 @@
                             <span class="topic">try/except</span>
                             <span class="topic">Чтение/запись файлов</span>
                         </div>
-                        <div class="roadmap-goal">
-                            <strong>🎯 Цель:</strong> Создать класс банковского счёта, систему управления библиотекой
+                        
+                        <div class="roadmap-goals">
+                            <h4>🎯 Цели:</h4>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="2-1">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Создать класс "Банковский счет"</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="2-2">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Система управления библиотекой</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="2-3">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Создать виртуальное окружение venv</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="2-4">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Установить первый пакет через pip</span>
+                            </label>
                         </div>
+                        
                         <div class="roadmap-resources">
                             <a href="https://stepik.org/course/68343" target="_blank" class="resource-link">Stepik: ООП</a>
                             <a href="https://www.youtube.com/playlist?list=PLlWXhlUMyooawilqK4lPXRvxtbYiw34S8" target="_blank" class="resource-link">YouTube: selfedu</a>
@@ -285,7 +355,7 @@
                     </div>
                 </div>
                 
-                <div class="roadmap-item">
+                <div class="roadmap-item" data-step="3">
                     <div class="roadmap-marker">
                         <span>3</span>
                     </div>
@@ -305,9 +375,31 @@
                             <span class="topic">BeautifulSoup парсинг</span>
                             <span class="topic">REST API</span>
                         </div>
-                        <div class="roadmap-goal">
-                            <strong>🎯 Цель:</strong> Спарсить сайт, сохранить в БД, создать API для данных
+                        
+                        <div class="roadmap-goals">
+                            <h4>🎯 Цели:</h4>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="3-1">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Работа с JSON и CSV файлами</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="3-2">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Создать SQLite базу данных</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="3-3">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Спарсить данные с сайта</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="3-4">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Получить данные из API</span>
+                            </label>
                         </div>
+                        
                         <div class="roadmap-resources">
                             <a href="https://sqlbolt.com/" target="_blank" class="resource-link">SQLBolt</a>
                             <a href="https://realpython.com/python-requests/" target="_blank" class="resource-link">Real Python: Requests</a>
@@ -315,7 +407,7 @@
                     </div>
                 </div>
                 
-                <div class="roadmap-item">
+                <div class="roadmap-item" data-step="4">
                     <div class="roadmap-marker">
                         <span>4</span>
                     </div>
@@ -356,10 +448,34 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="roadmap-goals">
+                            <h4>🎯 Цели (выбери направление):</h4>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="4-1">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Web: Создать блог на Django/Flask</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="4-2">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Data: Анализ датасета с Pandas</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="4-3">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Bot: Telegram бот на Aiogram</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="4-4">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">API: REST API на FastAPI</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="roadmap-item">
+                <div class="roadmap-item" data-step="5">
                     <div class="roadmap-marker">
                         <span>5</span>
                     </div>
@@ -377,6 +493,35 @@
                             <span class="topic">Docker</span>
                             <span class="topic">CI/CD</span>
                             <span class="topic">Паттерны проектирования</span>
+                        </div>
+                        
+                        <div class="roadmap-goals">
+                            <h4>🎯 Цели:</h4>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="5-1">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Написать асинхронный парсер</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="5-2">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Написать тесты на pytest</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="5-3">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Контейнеризация проекта в Docker</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="5-4">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Настроить CI/CD пайплайн</span>
+                            </label>
+                            <label class="goal-item">
+                                <input type="checkbox" class="goal-checkbox" data-goal="5-5">
+                                <span class="goal-checkmark"></span>
+                                <span class="goal-text">Деплой проекта на сервер</span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -513,6 +658,220 @@
                             <span class="term-name">Jupyter Notebook</span>
                             <span class="term-desc">Интерактивная среда для анализа данных</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backend Development Section -->
+    <section id="backend" class="backend-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🔧 Backend</span>
+                <h2 class="section-title">Backend разработка на Python</h2>
+                <p class="section-description">
+                    Полный стек технологий для серверной разработки
+                </p>
+            </div>
+            
+            <div class="backend-tabs">
+                <button class="backend-tab active" data-backend="databases">🗄️ Базы данных</button>
+                <button class="backend-tab" data-backend="apis">🔌 API</button>
+                <button class="backend-tab" data-backend="frameworks">🛠️ Фреймворки</button>
+                <button class="backend-tab" data-backend="devops">☁️ DevOps</button>
+            </div>
+            
+            <div class="backend-content">
+                <!-- Databases -->
+                <div class="backend-grid active" id="databases">
+                    <div class="backend-card">
+                        <div class="backend-icon">🐘</div>
+                        <h3>PostgreSQL</h3>
+                        <p>Мощная реляционная СУБД для production</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">SQL</span>
+                            <span class="backend-tag">ACID</span>
+                            <span class="backend-tag">JSON</span>
+                        </div>
+                        <a href="https://www.postgresql.org/docs/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">🍃</div>
+                        <h3>MongoDB</h3>
+                        <p>NoSQL база для документов и гибких схем</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">NoSQL</span>
+                            <span class="backend-tag">Documents</span>
+                            <span class="backend-tag">Flexible</span>
+                        </div>
+                        <a href="https://www.mongodb.com/docs/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">📦</div>
+                        <h3>SQLite</h3>
+                        <p>Легковесная встроенная БД для локальных проектов</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Embedded</span>
+                            <span class="backend-tag">Zero-config</span>
+                            <span class="backend-tag">Local</span>
+                        </div>
+                        <a href="https://docs.python.org/3/library/sqlite3.html" target="_blank" class="resource-link">Python sqlite3</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">⚡</div>
+                        <h3>Redis</h3>
+                        <p>In-memory БД для кэширования и очередей</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Cache</span>
+                            <span class="backend-tag">Fast</span>
+                            <span class="backend-tag">Pub/Sub</span>
+                        </div>
+                        <a href="https://redis.io/docs/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                </div>
+                
+                <!-- APIs -->
+                <div class="backend-grid" id="apis">
+                    <div class="backend-card">
+                        <div class="backend-icon">🔗</div>
+                        <h3>REST API</h3>
+                        <p>Стандартная архитектура веб-сервисов</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">GET/POST</span>
+                            <span class="backend-tag">JSON</span>
+                            <span class="backend-tag">HTTP</span>
+                        </div>
+                        <a href="https://restfulapi.net/" target="_blank" class="resource-link">Гайд</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">📊</div>
+                        <h3>GraphQL</h3>
+                        <p>Гибкий язык запросов для API</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Query</span>
+                            <span class="backend-tag">Types</span>
+                            <span class="backend-tag">Flexible</span>
+                        </div>
+                        <a href="https://strawberry.rocks/" target="_blank" class="resource-link">Strawberry (Python)</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">🔐</div>
+                        <h3>OAuth2 / JWT</h3>
+                        <p>Аутентификация и авторизация</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Tokens</span>
+                            <span class="backend-tag">Security</span>
+                            <span class="backend-tag">Auth</span>
+                        </div>
+                        <a href="https://jwt.io/" target="_blank" class="resource-link">JWT.io</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">📡</div>
+                        <h3>WebSockets</h3>
+                        <p>Real-time двусторонняя связь</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Real-time</span>
+                            <span class="backend-tag">Bidirectional</span>
+                            <span class="backend-tag">Live</span>
+                        </div>
+                        <a href="https://websockets.readthedocs.io/" target="_blank" class="resource-link">websockets lib</a>
+                    </div>
+                </div>
+                
+                <!-- Frameworks -->
+                <div class="backend-grid" id="frameworks">
+                    <div class="backend-card featured">
+                        <div class="backend-icon">🎸</div>
+                        <h3>Django</h3>
+                        <p>Полный фреймворк с ORM, админкой, auth</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Full-stack</span>
+                            <span class="backend-tag">ORM</span>
+                            <span class="backend-tag">Batteries</span>
+                        </div>
+                        <a href="https://docs.djangoproject.com/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card featured">
+                        <div class="backend-icon">⚡</div>
+                        <h3>FastAPI</h3>
+                        <p>Современный async фреймворк с auto-docs</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Async</span>
+                            <span class="backend-tag">OpenAPI</span>
+                            <span class="backend-tag">Fast</span>
+                        </div>
+                        <a href="https://fastapi.tiangolo.com/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">🌶️</div>
+                        <h3>Flask</h3>
+                        <p>Минималистичный микрофреймворк</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Micro</span>
+                            <span class="backend-tag">Simple</span>
+                            <span class="backend-tag">Flexible</span>
+                        </div>
+                        <a href="https://flask.palletsprojects.com/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">🦄</div>
+                        <h3>SQLAlchemy</h3>
+                        <p>Мощный ORM для работы с БД</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">ORM</span>
+                            <span class="backend-tag">SQL</span>
+                            <span class="backend-tag">Migrations</span>
+                        </div>
+                        <a href="https://www.sqlalchemy.org/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                </div>
+                
+                <!-- DevOps -->
+                <div class="backend-grid" id="devops">
+                    <div class="backend-card">
+                        <div class="backend-icon">🐳</div>
+                        <h3>Docker</h3>
+                        <p>Контейнеризация приложений</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Containers</span>
+                            <span class="backend-tag">Images</span>
+                            <span class="backend-tag">Deploy</span>
+                        </div>
+                        <a href="https://docs.docker.com/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">📦</div>
+                        <h3>Docker Compose</h3>
+                        <p>Оркестрация нескольких контейнеров</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Multi-container</span>
+                            <span class="backend-tag">YAML</span>
+                            <span class="backend-tag">Services</span>
+                        </div>
+                        <a href="https://docs.docker.com/compose/" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">🔄</div>
+                        <h3>GitHub Actions</h3>
+                        <p>CI/CD автоматизация</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">CI/CD</span>
+                            <span class="backend-tag">Workflows</span>
+                            <span class="backend-tag">Auto</span>
+                        </div>
+                        <a href="https://docs.github.com/en/actions" target="_blank" class="resource-link">Документация</a>
+                    </div>
+                    <div class="backend-card">
+                        <div class="backend-icon">☁️</div>
+                        <h3>Nginx</h3>
+                        <p>Веб-сервер и reverse proxy</p>
+                        <div class="backend-tags">
+                            <span class="backend-tag">Proxy</span>
+                            <span class="backend-tag">Static</span>
+                            <span class="backend-tag">Load Balance</span>
+                        </div>
+                        <a href="https://nginx.org/en/docs/" target="_blank" class="resource-link">Документация</a>
                     </div>
                 </div>
             </div>

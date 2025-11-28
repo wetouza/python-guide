@@ -535,3 +535,219 @@ console.log(
     'font-size: 14px; color: #8b5cf6; margin-top: 8px;',
     'font-size: 12px; color: #22c55e; margin-top: 4px;'
 );
+
+// ===== Goals System with localStorage =====
+const STORAGE_KEY = 'python_master_goals';
+
+// Load saved goals from localStorage
+function loadGoals() {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+        console.error('Error loading goals:', e);
+        return {};
+    }
+}
+
+// Save goals to localStorage
+function saveGoals(goals) {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(goals));
+        showSyncAnimation();
+    } catch (e) {
+        console.error('Error saving goals:', e);
+    }
+}
+
+// Show sync animation
+function showSyncAnimation() {
+    const syncBtn = document.getElementById('syncBtn');
+    if (syncBtn) {
+        syncBtn.classList.add('synced');
+        setTimeout(() => syncBtn.classList.remove('synced'), 1000);
+    }
+}
+
+// Update progress bar and stats
+function updateProgress() {
+    const checkboxes = document.querySelectorAll('.goal-checkbox');
+    const total = checkboxes.length;
+    const completed = document.querySelectorAll('.goal-checkbox:checked').length;
+    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+    
+    const progressBar = document.getElementById('progressBar');
+    const progressPercent = document.getElementById('progressPercent');
+    const completedCount = document.getElementById('completedCount');
+    const totalCount = document.getElementById('totalCount');
+    
+    if (progressBar) progressBar.style.width = `${percent}%`;
+    if (progressPercent) progressPercent.textContent = `${percent}%`;
+    if (completedCount) completedCount.textContent = completed;
+    if (totalCount) totalCount.textContent = total;
+    
+    // Show/hide progress tracker based on scroll
+    const progressTracker = document.getElementById('progressTracker');
+    if (progressTracker) {
+        if (window.scrollY > 300) {
+            progressTracker.classList.add('visible');
+        } else {
+            progressTracker.classList.remove('visible');
+        }
+    }
+}
+
+// Initialize goals
+function initGoals() {
+    const savedGoals = loadGoals();
+    const checkboxes = document.querySelectorAll('.goal-checkbox');
+    
+    checkboxes.forEach(checkbox => {
+        const goalId = checkbox.dataset.goal;
+        
+        // Restore saved state
+        if (savedGoals[goalId]) {
+            checkbox.checked = true;
+        }
+        
+        // Add change listener
+        checkbox.addEventListener('change', () => {
+            const goals = loadGoals();
+            goals[goalId] = checkbox.checked;
+            saveGoals(goals);
+            updateProgress();
+            
+            // Add celebration effect for completion
+            if (checkbox.checked) {
+                celebrateGoal(checkbox);
+            }
+        });
+    });
+    
+    updateProgress();
+}
+
+// Celebration effect when completing a goal
+function celebrateGoal(checkbox) {
+    const parent = checkbox.closest('.goal-item');
+    if (parent) {
+        // Add pulse effect
+        parent.style.animation = 'goalComplete 0.5s ease';
+        setTimeout(() => {
+            parent.style.animation = '';
+        }, 500);
+    }
+    
+    // Check if all goals in section are complete
+    const section = checkbox.closest('.roadmap-goals');
+    if (section) {
+        const allCheckboxes = section.querySelectorAll('.goal-checkbox');
+        const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
+        
+        if (allChecked) {
+            showToast('🎉 Этап завершён!');
+            // Add glow to roadmap item
+            const roadmapItem = section.closest('.roadmap-item');
+            if (roadmapItem) {
+                roadmapItem.classList.add('completed');
+            }
+        }
+    }
+}
+
+// Add goal complete animation style
+const goalStyle = document.createElement('style');
+goalStyle.textContent = `
+    @keyframes goalComplete {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.02); background: rgba(34, 197, 94, 0.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .roadmap-item.completed .roadmap-marker {
+        background: #22c55e !important;
+        border-color: #22c55e !important;
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+    }
+    
+    .roadmap-item.completed .roadmap-marker span {
+        color: white !important;
+    }
+`;
+document.head.appendChild(goalStyle);
+
+// Scroll listener for progress tracker
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            updateProgress();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Initialize goals on page load
+document.addEventListener('DOMContentLoaded', initGoals);
+
+// Also initialize immediately if DOM is already ready
+if (document.readyState !== 'loading') {
+    initGoals();
+}
+
+// ===== Backend Tabs =====
+const backendTabs = document.querySelectorAll('.backend-tab');
+const backendGrids = document.querySelectorAll('.backend-grid');
+
+backendTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.backend;
+        
+        // Update tab states
+        backendTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update grid visibility with animation
+        backendGrids.forEach(grid => {
+            if (grid.id === targetTab) {
+                grid.classList.add('active');
+                
+                // Animate cards with stagger effect
+                const cards = grid.querySelectorAll('.backend-card');
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px) translateZ(0)';
+                    
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) translateZ(0)';
+                        }, index * 60);
+                    });
+                });
+            } else {
+                grid.classList.remove('active');
+            }
+        });
+    });
+});
+
+// ===== Export/Import Progress =====
+// Add to sync button functionality
+const syncBtn = document.getElementById('syncBtn');
+if (syncBtn) {
+    syncBtn.addEventListener('click', () => {
+        const goals = loadGoals();
+        const completedCount = Object.values(goals).filter(v => v).length;
+        showToast(`✅ Сохранено: ${completedCount} целей выполнено`);
+    });
+}
+
+// ===== Clear Progress (for debugging) =====
+window.clearProgress = function() {
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('.goal-checkbox').forEach(cb => cb.checked = false);
+    updateProgress();
+    showToast('🔄 Прогресс сброшен');
+};
