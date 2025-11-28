@@ -1,0 +1,14 @@
+{
+  "name": "python-master",
+  "version": "1.0.0",
+  "description": "Полный гайд по изучению Python",
+  "scripts": {
+    "dev": "npx serve",
+    "start": "npx serve"
+  },
+  "keywords": ["python", "tutorial", "guide", "learning"],
+  "author": "PythonMaster",
+  "license": "MIT"
+}
+
+

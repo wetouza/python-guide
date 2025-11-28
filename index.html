@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Master — Полный гайд по изучению Python</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Geist fonts for basecn style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/style.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/style.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        python: { blue: '#306998', yellow: '#FFD43B' },
+                        surface: {
+                            50: '#fafafa', 100: '#18181b', 200: '#1a1a2e',
+                            300: '#16213e', 400: '#0f3460', 500: '#0a0a0f'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.4)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+</head>
+<body>
+    <!-- Grid background - basecn style -->
+    <div class="grid-bg"></div>
+    <div class="gradient-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🐍</span>
+                <span>Python<span class="gradient-text">Master</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#courses">Курсы</a></li>
+                <li><a href="#terms">Термины</a></li>
+                <li><a href="#practice">Практика</a></li>
+                <li><a href="#english">English</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#roadmap" class="btn btn-primary">Начать обучение</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Обновлено 2025
+            </div>
+            <h1 class="hero-title">
+                Полный гайд по изучению<br>
+                <span class="highlight-box">Python</span>
+            </h1>
+            <p class="hero-description">
+                Собрали все лучшие курсы, книги, сайты и ресурсы для изучения Python — 
+                от абсолютного нуля до продвинутого уровня. Бесплатно и платно.
+            </p>
+            <div class="hero-actions">
+                <a href="#roadmap" class="btn btn-primary btn-lg">
+                    <span>Начать с Roadmap</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#courses" class="btn btn-outline btn-lg">
+                    Смотреть курсы
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">50+</span>
+                    <span class="stat-label">Курсов</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">30+</span>
+                    <span class="stat-label">Книг</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">20+</span>
+                    <span class="stat-label">Платформ</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Бесплатно</span>
+                </div>
+            </div>
+            
+            <!-- Code Preview -->
+            <div class="code-preview">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="code-title">hello_python.py</span>
+                </div>
+                <pre class="code-content"><code><span class="comment"># Твой первый код на Python! 🚀</span>
+<span class="keyword">print</span>(<span class="string">"Привет, мир!"</span>)
+
+<span class="comment"># Переменные</span>
+<span class="variable">name</span> = <span class="string">"Python Learner"</span>
+<span class="variable">level</span> = <span class="string">"Beginner"</span>
+
+<span class="comment"># Цикл</span>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">3</span>):
+    <span class="keyword">print</span>(<span class="string">f"День </span>{<span class="variable">i</span>+<span class="number">1</span>}<span class="string">: Учу Python!"</span>)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Python Section -->
+    <section class="why-python">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Почему Python?</span>
+                <h2 class="section-title">Самый популярный язык 2025</h2>
+                <p class="section-description">
+                    Python — #1 язык программирования по версии TIOBE, Stack Overflow и GitHub
+                </p>
+            </div>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">📊</div>
+                    <h3>Data Science & AI</h3>
+                    <p>Pandas, NumPy, TensorFlow, PyTorch — основа машинного обучения</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Django, Flask, FastAPI — мощные веб-фреймворки</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🤖</div>
+                    <h3>Автоматизация</h3>
+                    <p>Скрипты, боты, парсинг — автоматизируй рутину</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💼</div>
+                    <h3>Высокие зарплаты</h3>
+                    <p>От 100k₽ Junior до 400k₽+ Senior в России</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🎯</div>
+                    <h3>Простой синтаксис</h3>
+                    <p>Читается как английский, идеален для новичков</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚀</div>
+                    <h3>Быстрый старт</h3>
+                    <p>Первую программу напишешь за 5 минут</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Roadmap</span>
+                <h2 class="section-title">Путь изучения Python</h2>
+                <p class="section-description">
+                    Пошаговый план от новичка до профессионала
+                </p>
+            </div>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">
+                        <span>1</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-header">
+                            <span class="roadmap-duration">2-4 недели</span>
+                            <h3>🌱 Основы Python</h3>
+                        </div>
+                        <p class="roadmap-desc">Фундамент программирования. Начни писать первые программы!</p>
+                        <div class="roadmap-topics">
+                            <span class="topic">Установка Python 3.12+</span>
+                            <span class="topic">Переменные и типы данных</span>
+                            <span class="topic">Арифметические операторы</span>
+                            <span class="topic">Условия if/elif/else</span>
+                            <span class="topic">Циклы for и while</span>
+                            <span class="topic">Функции и аргументы</span>
+                            <span class="topic">Списки, словари, множества</span>
+                            <span class="topic">Строки и f-strings</span>
+                            <span class="topic">Input/Output</span>
+                        </div>
+                        <div class="roadmap-goal">
+                            <strong>🎯 Цель:</strong> Написать калькулятор, игру "Угадай число", список задач
+                        </div>
+                        <div class="roadmap-resources">
+                            <a href="https://pythontutor.ru/" target="_blank" class="resource-link">Python Tutor</a>
+                            <a href="https://stepik.org/course/58852" target="_blank" class="resource-link">Stepik: Поколение Python</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">
+                        <span>2</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-header">
+                            <span class="roadmap-duration">3-4 недели</span>
+                            <h3>📦 ООП и модули</h3>
+                        </div>
+                        <p class="roadmap-desc">Организуй код как профессионал. Создавай переиспользуемые компоненты.</p>
+                        <div class="roadmap-topics">
+                            <span class="topic">Классы и объекты</span>
+                            <span class="topic">Методы и атрибуты</span>
+                            <span class="topic">Наследование</span>
+                            <span class="topic">Инкапсуляция (__private)</span>
+                            <span class="topic">Полиморфизм</span>
+                            <span class="topic">Магические методы</span>
+                            <span class="topic">pip и venv</span>
+                            <span class="topic">try/except</span>
+                            <span class="topic">Чтение/запись файлов</span>
+                        </div>
+                        <div class="roadmap-goal">
+                            <strong>🎯 Цель:</strong> Создать класс банковского счёта, систему управления библиотекой
+                        </div>
+                        <div class="roadmap-resources">
+                            <a href="https://stepik.org/course/68343" target="_blank" class="resource-link">Stepik: ООП</a>
+                            <a href="https://www.youtube.com/playlist?list=PLlWXhlUMyooawilqK4lPXRvxtbYiw34S8" target="_blank" class="resource-link">YouTube: selfedu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">
+                        <span>3</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-header">
+                            <span class="roadmap-duration">2-3 недели</span>
+                            <h3>🗄️ Работа с данными</h3>
+                        </div>
+                        <p class="roadmap-desc">Научись получать, обрабатывать и хранить данные из любых источников.</p>
+                        <div class="roadmap-topics">
+                            <span class="topic">JSON и CSV файлы</span>
+                            <span class="topic">Регулярные выражения</span>
+                            <span class="topic">SQLite / PostgreSQL</span>
+                            <span class="topic">SELECT, INSERT, UPDATE</span>
+                            <span class="topic">SQLAlchemy ORM</span>
+                            <span class="topic">requests библиотека</span>
+                            <span class="topic">BeautifulSoup парсинг</span>
+                            <span class="topic">REST API</span>
+                        </div>
+                        <div class="roadmap-goal">
+                            <strong>🎯 Цель:</strong> Спарсить сайт, сохранить в БД, создать API для данных
+                        </div>
+                        <div class="roadmap-resources">
+                            <a href="https://sqlbolt.com/" target="_blank" class="resource-link">SQLBolt</a>
+                            <a href="https://realpython.com/python-requests/" target="_blank" class="resource-link">Real Python: Requests</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">
+                        <span>4</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-header">
+                            <span class="roadmap-duration">4-8 недель</span>
+                            <h3>🎯 Специализация</h3>
+                        </div>
+                        <div class="roadmap-specializations">
+                            <div class="spec-card">
+                                <h4>🌐 Web Development</h4>
+                                <div class="roadmap-topics">
+                                    <span class="topic">Django</span>
+                                    <span class="topic">Flask</span>
+                                    <span class="topic">FastAPI</span>
+                                    <span class="topic">REST API</span>
+                                    <span class="topic">HTML/CSS</span>
+                                </div>
+                            </div>
+                            <div class="spec-card">
+                                <h4>📊 Data Science</h4>
+                                <div class="roadmap-topics">
+                                    <span class="topic">NumPy</span>
+                                    <span class="topic">Pandas</span>
+                                    <span class="topic">Matplotlib</span>
+                                    <span class="topic">Scikit-learn</span>
+                                    <span class="topic">Jupyter</span>
+                                </div>
+                            </div>
+                            <div class="spec-card">
+                                <h4>🤖 Automation</h4>
+                                <div class="roadmap-topics">
+                                    <span class="topic">Selenium</span>
+                                    <span class="topic">Scrapy</span>
+                                    <span class="topic">Aiogram</span>
+                                    <span class="topic">PyAutoGUI</span>
+                                    <span class="topic">Schedule</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">
+                        <span>5</span>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-header">
+                            <span class="roadmap-duration">Постоянно</span>
+                            <h3>🏆 Продвинутый уровень</h3>
+                        </div>
+                        <div class="roadmap-topics">
+                            <span class="topic">Асинхронность (asyncio)</span>
+                            <span class="topic">Многопоточность</span>
+                            <span class="topic">Декораторы</span>
+                            <span class="topic">Генераторы</span>
+                            <span class="topic">Тестирование (pytest)</span>
+                            <span class="topic">Docker</span>
+                            <span class="topic">CI/CD</span>
+                            <span class="topic">Паттерны проектирования</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Terms Section -->
+    <section id="terms" class="terms-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📚 Словарь</span>
+                <h2 class="section-title">IT Термины для Python разработчика</h2>
+                <p class="section-description">
+                    Ключевые понятия которые нужно знать
+                </p>
+            </div>
+            
+            <div class="terms-grid">
+                <div class="term-category">
+                    <h3>🐍 Python основы</h3>
+                    <div class="terms-list">
+                        <div class="term-item">
+                            <span class="term-name">Variable (Переменная)</span>
+                            <span class="term-desc">Контейнер для хранения данных. name = "Python"</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Function (Функция)</span>
+                            <span class="term-desc">Блок кода, который можно вызвать по имени. def hello():</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Class (Класс)</span>
+                            <span class="term-desc">Шаблон для создания объектов с атрибутами и методами</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Module (Модуль)</span>
+                            <span class="term-desc">Файл .py с кодом, который можно импортировать</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Package (Пакет)</span>
+                            <span class="term-desc">Папка с модулями и файлом __init__.py</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Decorator (Декоратор)</span>
+                            <span class="term-desc">Функция, которая оборачивает другую функцию @decorator</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="term-category">
+                    <h3>🌐 Web разработка</h3>
+                    <div class="terms-list">
+                        <div class="term-item">
+                            <span class="term-name">API (Application Programming Interface)</span>
+                            <span class="term-desc">Интерфейс для взаимодействия между программами</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">REST (Representational State Transfer)</span>
+                            <span class="term-desc">Архитектурный стиль для создания веб-сервисов</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">HTTP Methods (GET, POST, PUT, DELETE)</span>
+                            <span class="term-desc">Способы взаимодействия с сервером</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Framework (Фреймворк)</span>
+                            <span class="term-desc">Набор инструментов для разработки (Django, Flask)</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">ORM (Object-Relational Mapping)</span>
+                            <span class="term-desc">Связь между объектами Python и базой данных</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Endpoint (Эндпоинт)</span>
+                            <span class="term-desc">URL-адрес для доступа к API ресурсу</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="term-category">
+                    <h3>🛠️ Инструменты</h3>
+                    <div class="terms-list">
+                        <div class="term-item">
+                            <span class="term-name">Git</span>
+                            <span class="term-desc">Система контроля версий для отслеживания изменений</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Virtual Environment (venv)</span>
+                            <span class="term-desc">Изолированная среда Python для проекта</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">pip</span>
+                            <span class="term-desc">Менеджер пакетов Python. pip install package</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Docker</span>
+                            <span class="term-desc">Контейнеризация приложений для деплоя</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">CI/CD</span>
+                            <span class="term-desc">Автоматизация тестирования и деплоя кода</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">IDE (Integrated Development Environment)</span>
+                            <span class="term-desc">Среда разработки: VS Code, PyCharm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="term-category">
+                    <h3>📊 Data Science</h3>
+                    <div class="terms-list">
+                        <div class="term-item">
+                            <span class="term-name">DataFrame</span>
+                            <span class="term-desc">Таблица данных в Pandas для анализа</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">NumPy Array</span>
+                            <span class="term-desc">Многомерный массив для математических операций</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Machine Learning (ML)</span>
+                            <span class="term-desc">Машинное обучение — алгоритмы на данных</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Training/Testing Data</span>
+                            <span class="term-desc">Данные для обучения и проверки модели</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Model (Модель)</span>
+                            <span class="term-desc">Обученный алгоритм для предсказаний</span>
+                        </div>
+                        <div class="term-item">
+                            <span class="term-name">Jupyter Notebook</span>
+                            <span class="term-desc">Интерактивная среда для анализа данных</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Курсы</span>
+                <h2 class="section-title">Лучшие курсы по Python</h2>
+                <p class="section-description">
+                    Бесплатные и платные курсы на русском и английском
+                </p>
+            </div>
+            
+            <div class="courses-tabs">
+                <button class="course-tab active" data-tab="free">🆓 Бесплатные</button>
+                <button class="course-tab" data-tab="paid">💎 Платные</button>
+                <button class="course-tab" data-tab="youtube">▶️ YouTube</button>
+            </div>
+            
+            <div class="courses-content">
+                <!-- Free Courses -->
+                <div class="courses-grid active" id="free">
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Stepik</div>
+                        <h3>Поколение Python: курс для начинающих</h3>
+                        <p>Лучший русскоязычный курс для старта. 400+ задач с автопроверкой.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.9</span>
+                            <span>👥 700k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://stepik.org/course/58852" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Stepik</div>
+                        <h3>Поколение Python: курс для продвинутых</h3>
+                        <p>Продолжение курса. ООП, модули, работа с файлами.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.9</span>
+                            <span>👥 200k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://stepik.org/course/68343" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Codecademy</div>
+                        <h3>Learn Python 3</h3>
+                        <p>Интерактивный курс от Codecademy. Практика прямо в браузере.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7</span>
+                            <span>👥 1M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">freeCodeCamp</div>
+                        <h3>Scientific Computing with Python</h3>
+                        <p>Сертификат от freeCodeCamp. 300 часов практики.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8</span>
+                            <span>👥 500k+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.freecodecamp.org/learn/scientific-computing-with-python/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Google</div>
+                        <h3>Python Crash Course (Google)</h3>
+                        <p>Курс от Google. Часть IT Automation сертификата.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8</span>
+                            <span>👥 800k+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.coursera.org/learn/python-crash-course" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Harvard CS50</div>
+                        <h3>CS50's Introduction to Python</h3>
+                        <p>Легендарный курс от Гарварда. Высочайшее качество.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.9</span>
+                            <span>👥 2M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://cs50.harvard.edu/python/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">Kaggle</div>
+                        <h3>Python Course</h3>
+                        <p>Быстрый курс для Data Science. Практические задания.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.6</span>
+                            <span>👥 300k+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.kaggle.com/learn/python" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge free">Бесплатно</div>
+                        <div class="course-platform">JetBrains</div>
+                        <h3>Python Core Track</h3>
+                        <p>Курс от создателей PyCharm. Отличная структура.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7</span>
+                            <span>👥 100k+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://hyperskill.org/tracks/2" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                </div>
+                
+                <!-- Paid Courses -->
+                <div class="courses-grid" id="paid">
+                    <div class="course-card">
+                        <div class="course-badge paid">$15-20</div>
+                        <div class="course-platform">Udemy</div>
+                        <h3>100 Days of Code: Python Pro Bootcamp</h3>
+                        <p>Самый популярный курс на Udemy. 100 проектов за 100 дней.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7</span>
+                            <span>👥 1.5M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.udemy.com/course/100-days-of-code/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge paid">$12-15</div>
+                        <div class="course-platform">Udemy</div>
+                        <h3>Automate the Boring Stuff with Python</h3>
+                        <p>Практичный курс по автоматизации от Эла Свейгарта.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.6</span>
+                            <span>👥 1M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.udemy.com/course/automate/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge paid">от 50k₽</div>
+                        <div class="course-platform">Яндекс Практикум</div>
+                        <h3>Python-разработчик</h3>
+                        <p>Полноценная профессия с менторством и трудоустройством.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8</span>
+                            <span>👥 50k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://practicum.yandex.ru/python-developer/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge paid">от 80k₽</div>
+                        <div class="course-platform">Skillbox</div>
+                        <h3>Профессия Python-разработчик</h3>
+                        <p>Комплексное обучение с нуля до middle. Реальные проекты.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.5</span>
+                            <span>👥 30k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://skillbox.ru/course/python-developer/" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge paid">от 60k₽</div>
+                        <div class="course-platform">GeekBrains</div>
+                        <h3>Факультет Python-разработки</h3>
+                        <p>Обучение с гарантией трудоустройства.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.4</span>
+                            <span>👥 20k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://gb.ru/geek_university/developer/programmer/python" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge paid">$39/мес</div>
+                        <div class="course-platform">DataCamp</div>
+                        <h3>Python Programmer Career Track</h3>
+                        <p>Интерактивное обучение для Data Science.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.6</span>
+                            <span>👥 200k+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.datacamp.com/tracks/python-programmer" target="_blank" class="btn btn-outline btn-block">Перейти к курсу</a>
+                    </div>
+                </div>
+                
+                <!-- YouTube -->
+                <div class="courses-grid" id="youtube">
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">selfedu</div>
+                        <h3>Python для начинающих</h3>
+                        <p>Лучший русскоязычный канал. Объясняет просто и понятно.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.9</span>
+                            <span>👥 500k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://www.youtube.com/playlist?list=PLlWXhlUMyooawilqK4lPXRvxtbYiw34S8" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">Тимофей Хирьянов</div>
+                        <h3>Python от МФТИ</h3>
+                        <p>Академический подход. Алгоритмы и структуры данных.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8</span>
+                            <span>👥 300k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://www.youtube.com/playlist?list=PLRDzFCPr95fK7tr47883DFUbm4GeOjjc0" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">Corey Schafer</div>
+                        <h3>Python Tutorials</h3>
+                        <p>Один из лучших англоязычных каналов. Django, Flask, OOP.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.9</span>
+                            <span>👥 1M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.youtube.com/user/schaaborern/playlists" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">Tech With Tim</div>
+                        <h3>Python Programming</h3>
+                        <p>Проектный подход. Игры, боты, приложения.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7</span>
+                            <span>👥 1.2M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.youtube.com/c/TechWithTim/playlists" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">freeCodeCamp</div>
+                        <h3>Python Full Course</h3>
+                        <p>12-часовой полный курс. Всё в одном видео.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.8</span>
+                            <span>👥 40M+</span>
+                            <span>🇬🇧 English</span>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-badge youtube">YouTube</div>
+                        <div class="course-platform">Диджитализируй!</div>
+                        <h3>Python уроки</h3>
+                        <p>Современный подход к обучению. Много практики.</p>
+                        <div class="course-meta">
+                            <span>⭐ 4.7</span>
+                            <span>👥 200k+</span>
+                            <span>🇷🇺 Русский</span>
+                        </div>
+                        <a href="https://www.youtube.com/@t0digital/playlists" target="_blank" class="btn btn-outline btn-block">Смотреть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section id="practice" class="practice">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Практика</span>
+                <h2 class="section-title">Где решать задачи</h2>
+                <p class="section-description">
+                    Теория без практики бесполезна. Вот лучшие платформы для оттачивания навыков
+                </p>
+            </div>
+            
+            <div class="practice-grid">
+                <a href="https://leetcode.com/" target="_blank" class="practice-card">
+                    <div class="practice-icon">🧩</div>
+                    <div class="practice-info">
+                        <h3>LeetCode</h3>
+                        <p>Задачи для собеседований. 2000+ задач разной сложности.</p>
+                        <span class="practice-level">Средний — Сложный</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://www.codewars.com/" target="_blank" class="practice-card">
+                    <div class="practice-icon">⚔️</div>
+                    <div class="practice-info">
+                        <h3>Codewars</h3>
+                        <p>Ката (задачи) с системой рангов. Геймификация обучения.</p>
+                        <span class="practice-level">Легкий — Сложный</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://www.hackerrank.com/domains/python" target="_blank" class="practice-card">
+                    <div class="practice-icon">💻</div>
+                    <div class="practice-info">
+                        <h3>HackerRank</h3>
+                        <p>Структурированные задачи по Python. Сертификаты.</p>
+                        <span class="practice-level">Легкий — Средний</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://exercism.org/tracks/python" target="_blank" class="practice-card">
+                    <div class="practice-icon">🏋️</div>
+                    <div class="practice-info">
+                        <h3>Exercism</h3>
+                        <p>Бесплатные упражнения с менторством от сообщества.</p>
+                        <span class="practice-level">Легкий — Средний</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://www.codingame.com/" target="_blank" class="practice-card">
+                    <div class="practice-icon">🎮</div>
+                    <div class="practice-info">
+                        <h3>CodinGame</h3>
+                        <p>Программирование через игры. Решай задачи, управляй персонажем.</p>
+                        <span class="practice-level">Легкий — Средний</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://checkio.org/" target="_blank" class="practice-card">
+                    <div class="practice-icon">🏝️</div>
+                    <div class="practice-info">
+                        <h3>CheckiO</h3>
+                        <p>Игровые миссии для изучения Python. Интересный сюжет.</p>
+                        <span class="practice-level">Легкий — Средний</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://projecteuler.net/" target="_blank" class="practice-card">
+                    <div class="practice-icon">🔢</div>
+                    <div class="practice-info">
+                        <h3>Project Euler</h3>
+                        <p>Математические задачи. Развивает алгоритмическое мышление.</p>
+                        <span class="practice-level">Средний — Сложный</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+                
+                <a href="https://codeforces.com/" target="_blank" class="practice-card">
+                    <div class="practice-icon">🏆</div>
+                    <div class="practice-info">
+                        <h3>Codeforces</h3>
+                        <p>Соревновательное программирование. Регулярные контесты.</p>
+                        <span class="practice-level">Средний — Сложный</span>
+                    </div>
+                    <div class="practice-arrow">→</div>
+                </a>
+            </div>
+            
+            <!-- Project Ideas -->
+            <div class="projects-section">
+                <h3>💡 Идеи для pet-проектов</h3>
+                <div class="projects-grid">
+                    <div class="project-idea">
+                        <span class="project-level beginner">Новичок</span>
+                        <h4>Калькулятор</h4>
+                        <p>Консольный или с GUI (Tkinter)</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level beginner">Новичок</span>
+                        <h4>Игра "Угадай число"</h4>
+                        <p>Бот загадывает, ты угадываешь</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level beginner">Новичок</span>
+                        <h4>To-Do List</h4>
+                        <p>Список задач с сохранением</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level intermediate">Средний</span>
+                        <h4>Telegram бот</h4>
+                        <p>Бот с aiogram или telebot</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level intermediate">Средний</span>
+                        <h4>Парсер сайтов</h4>
+                        <p>Собирай данные с любого сайта</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level intermediate">Средний</span>
+                        <h4>REST API</h4>
+                        <p>Свой API на Flask/FastAPI</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level advanced">Продвинутый</span>
+                        <h4>Веб-приложение</h4>
+                        <p>Полноценный сайт на Django</p>
+                    </div>
+                    <div class="project-idea">
+                        <span class="project-level advanced">Продвинутый</span>
+                        <h4>ML модель</h4>
+                        <p>Предсказание цен, классификация</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Ресурсы</span>
+                <h2 class="section-title">Полезные сайты и документация</h2>
+            </div>
+            
+            <div class="resources-categories">
+                <div class="resource-category">
+                    <h3>📖 Документация</h3>
+                    <div class="resource-list">
+                        <a href="https://docs.python.org/3/" target="_blank" class="resource-item">
+                            <span class="resource-name">Python Docs</span>
+                            <span class="resource-desc">Официальная документация Python</span>
+                        </a>
+                        <a href="https://realpython.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">Real Python</span>
+                            <span class="resource-desc">Туториалы и гайды высшего качества</span>
+                        </a>
+                        <a href="https://www.w3schools.com/python/" target="_blank" class="resource-item">
+                            <span class="resource-name">W3Schools Python</span>
+                            <span class="resource-desc">Простой справочник с примерами</span>
+                        </a>
+                        <a href="https://pythontutor.ru/" target="_blank" class="resource-item">
+                            <span class="resource-name">Python Tutor (RU)</span>
+                            <span class="resource-desc">Учебник на русском языке</span>
+                        </a>
+                        <a href="https://pyneng.readthedocs.io/" target="_blank" class="resource-item">
+                            <span class="resource-name">Python для сетевых инженеров</span>
+                            <span class="resource-desc">Бесплатная книга на русском</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>🛠️ Инструменты</h3>
+                    <div class="resource-list">
+                        <a href="https://www.jetbrains.com/pycharm/" target="_blank" class="resource-item">
+                            <span class="resource-name">PyCharm</span>
+                            <span class="resource-desc">Лучшая IDE для Python</span>
+                        </a>
+                        <a href="https://code.visualstudio.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">VS Code</span>
+                            <span class="resource-desc">Легкий редактор с Python расширением</span>
+                        </a>
+                        <a href="https://jupyter.org/" target="_blank" class="resource-item">
+                            <span class="resource-name">Jupyter Notebook</span>
+                            <span class="resource-desc">Для Data Science и экспериментов</span>
+                        </a>
+                        <a href="https://colab.research.google.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">Google Colab</span>
+                            <span class="resource-desc">Jupyter в облаке с GPU бесплатно</span>
+                        </a>
+                        <a href="https://replit.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">Replit</span>
+                            <span class="resource-desc">Онлайн IDE в браузере</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>📦 Библиотеки</h3>
+                    <div class="resource-list">
+                        <a href="https://pypi.org/" target="_blank" class="resource-item">
+                            <span class="resource-name">PyPI</span>
+                            <span class="resource-desc">Репозиторий Python пакетов</span>
+                        </a>
+                        <a href="https://numpy.org/doc/" target="_blank" class="resource-item">
+                            <span class="resource-name">NumPy</span>
+                            <span class="resource-desc">Математические вычисления</span>
+                        </a>
+                        <a href="https://pandas.pydata.org/docs/" target="_blank" class="resource-item">
+                            <span class="resource-name">Pandas</span>
+                            <span class="resource-desc">Работа с данными</span>
+                        </a>
+                        <a href="https://docs.djangoproject.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">Django</span>
+                            <span class="resource-desc">Веб-фреймворк</span>
+                        </a>
+                        <a href="https://fastapi.tiangolo.com/" target="_blank" class="resource-item">
+                            <span class="resource-name">FastAPI</span>
+                            <span class="resource-desc">Современный API фреймворк</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>👥 Сообщества</h3>
+                    <div class="resource-list">
+                        <a href="https://stackoverflow.com/questions/tagged/python" target="_blank" class="resource-item">
+                            <span class="resource-name">Stack Overflow</span>
+                            <span class="resource-desc">Вопросы и ответы</span>
+                        </a>
+                        <a href="https://www.reddit.com/r/learnpython/" target="_blank" class="resource-item">
+                            <span class="resource-name">r/learnpython</span>
+                            <span class="resource-desc">Reddit сообщество для новичков</span>
+                        </a>
+                        <a href="https://t.me/ru_python" target="_blank" class="resource-item">
+                            <span class="resource-name">Python (Telegram)</span>
+                            <span class="resource-desc">Русскоязычный чат</span>
+                        </a>
+                        <a href="https://habr.com/ru/hub/python/" target="_blank" class="resource-item">
+                            <span class="resource-name">Хабр Python</span>
+                            <span class="resource-desc">Статьи на русском</span>
+                        </a>
+                        <a href="https://discord.gg/python" target="_blank" class="resource-item">
+                            <span class="resource-name">Python Discord</span>
+                            <span class="resource-desc">Англоязычный Discord сервер</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VS Code Setup Section -->
+    <section id="vscode" class="vscode-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🛠️ Настройка IDE</span>
+                <h2 class="section-title">VS Code для Python</h2>
+                <p class="section-description">
+                    Превратите VS Code в мощную Python IDE с этими расширениями
+                </p>
+            </div>
+            
+            <div class="vscode-grid">
+                <!-- Essential Extensions -->
+                <div class="vscode-category">
+                    <h3>⚡ Обязательные расширения</h3>
+                    <div class="extension-list">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" class="extension-card essential">
+                            <div class="ext-icon">🐍</div>
+                            <div class="ext-info">
+                                <h4>Python</h4>
+                                <p class="ext-publisher">Microsoft</p>
+                                <p class="ext-desc">Основное расширение. IntelliSense, отладка, линтинг, форматирование.</p>
+                                <span class="ext-downloads">100M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance" target="_blank" class="extension-card essential">
+                            <div class="ext-icon">🚀</div>
+                            <div class="ext-info">
+                                <h4>Pylance</h4>
+                                <p class="ext-publisher">Microsoft</p>
+                                <p class="ext-desc">Быстрый языковой сервер. Типизация, автодополнение, навигация.</p>
+                                <span class="ext-downloads">70M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" target="_blank" class="extension-card essential">
+                            <div class="ext-icon">🔧</div>
+                            <div class="ext-info">
+                                <h4>Python Debugger</h4>
+                                <p class="ext-publisher">Microsoft</p>
+                                <p class="ext-desc">Отладка Python кода. Точки останова, пошаговое выполнение.</p>
+                                <span class="ext-downloads">50M+ загрузок</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Productivity Extensions -->
+                <div class="vscode-category">
+                    <h3>💡 Продуктивность</h3>
+                    <div class="extension-list">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_blank" class="extension-card">
+                            <div class="ext-icon">🤖</div>
+                            <div class="ext-info">
+                                <h4>GitHub Copilot</h4>
+                                <p class="ext-publisher">GitHub</p>
+                                <p class="ext-desc">AI-помощник для написания кода. Автодополнение на стероидах.</p>
+                                <span class="ext-downloads">15M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring" target="_blank" class="extension-card">
+                            <div class="ext-icon">📝</div>
+                            <div class="ext-info">
+                                <h4>autoDocstring</h4>
+                                <p class="ext-publisher">Nils Werner</p>
+                                <p class="ext-desc">Автогенерация docstrings для функций и классов.</p>
+                                <span class="ext-downloads">3M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent" target="_blank" class="extension-card">
+                            <div class="ext-icon">↔️</div>
+                            <div class="ext-info">
+                                <h4>Python Indent</h4>
+                                <p class="ext-publisher">Kevin Rose</p>
+                                <p class="ext-desc">Правильные отступы при переносе строк.</p>
+                                <span class="ext-downloads">5M+ загрузок</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Code Quality -->
+                <div class="vscode-category">
+                    <h3>✨ Качество кода</h3>
+                    <div class="extension-list">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff" target="_blank" class="extension-card">
+                            <div class="ext-icon">⚡</div>
+                            <div class="ext-info">
+                                <h4>Ruff</h4>
+                                <p class="ext-publisher">Astral Software</p>
+                                <p class="ext-desc">Супер-быстрый линтер и форматтер. Замена Flake8 + Black.</p>
+                                <span class="ext-downloads">5M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter" target="_blank" class="extension-card">
+                            <div class="ext-icon">🖤</div>
+                            <div class="ext-info">
+                                <h4>Black Formatter</h4>
+                                <p class="ext-publisher">Microsoft</p>
+                                <p class="ext-desc">Автоформатирование кода. "Uncompromising" стиль.</p>
+                                <span class="ext-downloads">10M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort" target="_blank" class="extension-card">
+                            <div class="ext-icon">📦</div>
+                            <div class="ext-info">
+                                <h4>isort</h4>
+                                <p class="ext-publisher">Microsoft</p>
+                                <p class="ext-desc">Автосортировка импортов по PEP 8.</p>
+                                <span class="ext-downloads">8M+ загрузок</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- UI & Icons -->
+                <div class="vscode-category">
+                    <h3>🎨 Темы и иконки</h3>
+                    <div class="extension-list">
+                        <a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" class="extension-card">
+                            <div class="ext-icon">📁</div>
+                            <div class="ext-info">
+                                <h4>Material Icon Theme</h4>
+                                <p class="ext-publisher">Philipp Kief</p>
+                                <p class="ext-desc">Красивые иконки для файлов и папок. #1 иконпак.</p>
+                                <span class="ext-downloads">25M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" class="extension-card">
+                            <div class="ext-icon">🌙</div>
+                            <div class="ext-info">
+                                <h4>One Dark Pro</h4>
+                                <p class="ext-publisher">binaryify</p>
+                                <p class="ext-desc">Популярная тёмная тема. Красивая подсветка синтаксиса.</p>
+                                <span class="ext-downloads">10M+ загрузок</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme" target="_blank" class="extension-card">
+                            <div class="ext-icon">🐙</div>
+                            <div class="ext-info">
+                                <h4>GitHub Theme</h4>
+                                <p class="ext-publisher">GitHub</p>
+                                <p class="ext-desc">Официальная тема GitHub. Dark и Light варианты.</p>
+                                <span class="ext-downloads">15M+ загрузок</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Setup Guide -->
+            <div class="vscode-setup-guide">
+                <h3>🚀 Быстрая настройка</h3>
+                <div class="setup-steps">
+                    <div class="setup-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h4>Установка расширений</h4>
+                            <p>Откройте Extensions (Ctrl+Shift+X) и установите Python, Pylance, Ruff</p>
+                        </div>
+                    </div>
+                    <div class="setup-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h4>settings.json</h4>
+                            <div class="code-block-mini">
+                                <code>{
+  "python.defaultInterpreterPath": "python",
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "python.analysis.typeCheckingMode": "basic"
+}</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setup-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h4>Горячие клавиши</h4>
+                            <div class="hotkeys-grid">
+                                <div class="hotkey"><kbd>F5</kbd> Запуск/отладка</div>
+                                <div class="hotkey"><kbd>Ctrl+`</kbd> Терминал</div>
+                                <div class="hotkey"><kbd>Ctrl+Shift+P</kbd> Команды</div>
+                                <div class="hotkey"><kbd>Ctrl+Space</kbd> Автодополнение</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="books">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Книги</span>
+                <h2 class="section-title">Лучшие книги по Python</h2>
+            </div>
+            
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <span class="book-emoji">🐍</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag free">Бесплатно</span>
+                        <h4>Укус Питона (A Byte of Python)</h4>
+                        <p class="book-author">Swaroop C H</p>
+                        <p class="book-desc">Идеальная книга для начинающих. Есть русский перевод.</p>
+                        <a href="https://wombat.org.ua/AByteOfPython/" target="_blank" class="btn btn-outline btn-sm">Читать</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                        <span class="book-emoji">🤖</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag free">Бесплатно</span>
+                        <h4>Автоматизация рутинных задач</h4>
+                        <p class="book-author">Эл Свейгарт</p>
+                        <p class="book-desc">Практическое программирование для начинающих.</p>
+                        <a href="https://automatetheboringstuff.com/" target="_blank" class="btn btn-outline btn-sm">Читать</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);">
+                        <span class="book-emoji">📚</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag">Рекомендуем</span>
+                        <h4>Изучаем Python</h4>
+                        <p class="book-author">Марк Лутц</p>
+                        <p class="book-desc">"Библия" Python. 1600 страниц глубокого изучения.</p>
+                        <a href="https://www.ozon.ru/product/izuchaem-python-tom-1-5-e-izdanie-211432437/" target="_blank" class="btn btn-outline btn-sm">Купить</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);">
+                        <span class="book-emoji">💡</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag">Рекомендуем</span>
+                        <h4>Python. К вершинам мастерства</h4>
+                        <p class="book-author">Лучано Рамальо</p>
+                        <p class="book-desc">Для продвинутых. Глубокое понимание языка.</p>
+                        <a href="https://www.ozon.ru/product/python-k-vershinam-masterstva-lakonichnyy-i-effektivnyy-kod-2-e-izdanie-ramalo-luchano-690498729/" target="_blank" class="btn btn-outline btn-sm">Купить</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <span class="book-emoji">🧪</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag free">Бесплатно</span>
+                        <h4>Python для сетевых инженеров</h4>
+                        <p class="book-author">Наташа Самойленко</p>
+                        <p class="book-desc">Отличная книга на русском с практикой.</p>
+                        <a href="https://pyneng.readthedocs.io/ru/latest/" target="_blank" class="btn btn-outline btn-sm">Читать</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);">
+                        <span class="book-emoji">🎯</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag">Рекомендуем</span>
+                        <h4>Чистый Python</h4>
+                        <p class="book-author">Дэн Бейдер</p>
+                        <p class="book-desc">Тонкости и лучшие практики Python.</p>
+                        <a href="https://www.ozon.ru/product/chistyy-python-tonkosti-programmirovaniya-dlya-profi-beyder-den-216540683/" target="_blank" class="btn btn-outline btn-sm">Купить</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);">
+                        <span class="book-emoji">🚀</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag">Рекомендуем</span>
+                        <h4>Python Crash Course</h4>
+                        <p class="book-author">Eric Matthes</p>
+                        <p class="book-desc">Быстрый старт с проектами: игра, визуализация, веб.</p>
+                        <a href="https://nostarch.com/pythoncrashcourse2e" target="_blank" class="btn btn-outline btn-sm">Купить</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, #7F7FD5 0%, #86A8E7 50%, #91EAE4 100%);">
+                        <span class="book-emoji">🧠</span>
+                    </div>
+                    <div class="book-info">
+                        <span class="book-tag free">Бесплатно</span>
+                        <h4>Think Python</h4>
+                        <p class="book-author">Allen B. Downey</p>
+                        <p class="book-desc">Как думать как программист. Отличная методика.</p>
+                        <a href="https://greenteapress.com/thinkpython2/html/index.html" target="_blank" class="btn btn-outline btn-sm">Читать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- English for Programmers Section -->
+    <section id="english" class="english-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🇬🇧 Английский</span>
+                <h2 class="section-title">Английский для программистов</h2>
+                <p class="section-description">
+                    Большинство лучших ресурсов на английском. Вот как его подтянуть
+                </p>
+            </div>
+            
+            <div class="english-grid">
+                <!-- Why English -->
+                <div class="english-why">
+                    <h3>Зачем программисту английский?</h3>
+                    <ul class="why-list">
+                        <li>
+                            <span class="why-icon">📚</span>
+                            <div>
+                                <strong>Документация</strong>
+                                <p>Официальные доки Python, Django, FastAPI — всё на английском</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="why-icon">🔍</span>
+                            <div>
+                                <strong>Stack Overflow</strong>
+                                <p>90% ответов на ваши вопросы уже есть — на английском</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="why-icon">💰</span>
+                            <div>
+                                <strong>Зарплата x2-3</strong>
+                                <p>Удалёнка на зарубежные компании — от $3000/мес</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="why-icon">🎓</span>
+                            <div>
+                                <strong>Лучшие курсы</strong>
+                                <p>CS50, MIT, Udemy топ-курсы — на английском</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Learning Resources -->
+                <div class="english-resources">
+                    <h3>Ресурсы для изучения</h3>
+                    <div class="eng-resource-list">
+                        <a href="https://www.duolingo.com/" target="_blank" class="eng-resource-card">
+                            <span class="eng-icon">🦉</span>
+                            <div>
+                                <h4>Duolingo</h4>
+                                <p>Бесплатно. Геймификация. 10 мин/день</p>
+                                <span class="eng-level">Beginner</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.lingualeo.com/" target="_blank" class="eng-resource-card">
+                            <span class="eng-icon">🦁</span>
+                            <div>
+                                <h4>LinguaLeo</h4>
+                                <p>Русскоязычный сервис. Много контента</p>
+                                <span class="eng-level">Beginner — Intermediate</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.youtube.com/@EnglishClass101" target="_blank" class="eng-resource-card">
+                            <span class="eng-icon">▶️</span>
+                            <div>
+                                <h4>EnglishClass101</h4>
+                                <p>YouTube канал. Разговорный английский</p>
+                                <span class="eng-level">All Levels</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.italki.com/" target="_blank" class="eng-resource-card">
+                            <span class="eng-icon">👨‍🏫</span>
+                            <div>
+                                <h4>iTalki</h4>
+                                <p>Уроки с носителями от $5/час</p>
+                                <span class="eng-level">All Levels</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Translation Tools -->
+            <div class="translation-tools">
+                <h3>🌍 Инструменты для чтения иностранных гайдов</h3>
+                <div class="tools-grid">
+                    <a href="https://translate.google.com/" target="_blank" class="tool-card">
+                        <span class="tool-icon">🔤</span>
+                        <h4>Google Translate</h4>
+                        <p>Переводи целые страницы прямо в браузере</p>
+                    </a>
+                    <a href="https://www.deepl.com/translator" target="_blank" class="tool-card">
+                        <span class="tool-icon">🎯</span>
+                        <h4>DeepL</h4>
+                        <p>Лучший перевод технических текстов</p>
+                    </a>
+                    <a href="https://chromewebstore.google.com/detail/immersive-translate/bpoadfkcbjbfhfodiogcnhhhpibjhbnh" target="_blank" class="tool-card">
+                        <span class="tool-icon">📖</span>
+                        <h4>Immersive Translate</h4>
+                        <p>Перевод рядом с оригиналом</p>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- IT English Tips -->
+            <div class="it-english-tips">
+                <h3>💡 IT-английский: быстрый старт</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-num">1</div>
+                        <h4>Читай документацию</h4>
+                        <p>Начни с Python docs. Не понял слово — Google Translate. Через месяц будешь читать свободно.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-num">2</div>
+                        <h4>Смотри туториалы</h4>
+                        <p>YouTube с субтитрами (CC). Corey Schafer, Traversy Media — понятное произношение.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-num">3</div>
+                        <h4>Пиши код на EN</h4>
+                        <p>Переменные, комментарии, коммиты — всё на английском. Это 50% IT-английского.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-num">4</div>
+                        <h4>Stack Overflow daily</h4>
+                        <p>Читай вопросы и ответы каждый день. Учишь и английский, и программирование.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Useful Phrases -->
+            <div class="useful-phrases">
+                <h3>📝 Полезные фразы для разработчика</h3>
+                <div class="phrases-grid">
+                    <div class="phrase">
+                        <span class="phrase-en">"Let me debug this"</span>
+                        <span class="phrase-ru">Дай-ка отладить это</span>
+                    </div>
+                    <div class="phrase">
+                        <span class="phrase-en">"It works on my machine"</span>
+                        <span class="phrase-ru">У меня на компе работает 😅</span>
+                    </div>
+                    <div class="phrase">
+                        <span class="phrase-en">"Can you review my PR?"</span>
+                        <span class="phrase-ru">Можешь посмотреть мой пулл-реквест?</span>
+                    </div>
+                    <div class="phrase">
+                        <span class="phrase-en">"I'll refactor this later"</span>
+                        <span class="phrase-ru">Отрефакторю это потом</span>
+                    </div>
+                    <div class="phrase">
+                        <span class="phrase-en">"This is a known bug"</span>
+                        <span class="phrase-ru">Это известный баг</span>
+                    </div>
+                    <div class="phrase">
+                        <span class="phrase-en">"Let's discuss in the standup"</span>
+                        <span class="phrase-ru">Обсудим на стендапе</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cheatsheet Section -->
+    <section class="cheatsheet">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Шпаргалки</span>
+                <h2 class="section-title">Быстрые справочники</h2>
+            </div>
+            
+            <div class="cheatsheet-grid">
+                <a href="https://www.pythoncheatsheet.org/" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">📋</div>
+                    <h4>Python Cheatsheet</h4>
+                    <p>Полная шпаргалка по синтаксису</p>
+                </a>
+                
+                <a href="https://gto76.github.io/python-cheatsheet/" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">📖</div>
+                    <h4>Comprehensive Cheatsheet</h4>
+                    <p>Самая полная шпаргалка</p>
+                </a>
+                
+                <a href="https://quickref.me/python" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">⚡</div>
+                    <h4>QuickRef.me Python</h4>
+                    <p>Быстрый справочник</p>
+                </a>
+                
+                <a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">🐼</div>
+                    <h4>Pandas Cheatsheet</h4>
+                    <p>Работа с данными</p>
+                </a>
+                
+                <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">🔢</div>
+                    <h4>NumPy Cheatsheet</h4>
+                    <p>Математические операции</p>
+                </a>
+                
+                <a href="https://matplotlib.org/cheatsheets/" target="_blank" class="cheat-card">
+                    <div class="cheat-icon">📊</div>
+                    <h4>Matplotlib Cheatsheet</h4>
+                    <p>Визуализация данных</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="youtube-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">▶️ YouTube</span>
+                <h2 class="section-title">Лучшие YouTube каналы</h2>
+                <p class="section-description">
+                    Бесплатное видео-обучение от топовых авторов
+                </p>
+            </div>
+            
+            <div class="yt-channels-grid">
+                <!-- Russian Channels -->
+                <div class="yt-category">
+                    <h3>🇷🇺 На русском</h3>
+                    <div class="yt-cards">
+                        <a href="https://www.youtube.com/@selfedu_rus" target="_blank" class="yt-card">
+                            <div class="yt-avatar">🎓</div>
+                            <div class="yt-info">
+                                <h4>selfedu</h4>
+                                <p>Python с нуля, Django, алгоритмы</p>
+                                <span class="yt-subs">500K+ подписчиков</span>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@egoroff_channel" target="_blank" class="yt-card">
+                            <div class="yt-avatar">🎬</div>
+                            <div class="yt-info">
+                                <h4>Хауди Хо</h4>
+                                <p>Web-разработка, AI, карьера в IT</p>
+                                <span class="yt-subs">1M+ подписчиков</span>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@t0digital" target="_blank" class="yt-card">
+                            <div class="yt-avatar">💻</div>
+                            <div class="yt-info">
+                                <h4>Диджитализируй!</h4>
+                                <p>Django, Flask, практические проекты</p>
+                                <span class="yt-subs">200K+ подписчиков</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- English Channels -->
+                <div class="yt-category">
+                    <h3>🇬🇧 На английском</h3>
+                    <div class="yt-cards">
+                        <a href="https://www.youtube.com/@coreyms" target="_blank" class="yt-card">
+                            <div class="yt-avatar">🐍</div>
+                            <div class="yt-info">
+                                <h4>Corey Schafer</h4>
+                                <p>Python туториалы, лучшие практики</p>
+                                <span class="yt-subs">1M+ подписчиков</span>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@techloadspeaks" target="_blank" class="yt-card">
+                            <div class="yt-avatar">⚡</div>
+                            <div class="yt-info">
+                                <h4>Tech With Tim</h4>
+                                <p>Game dev, ML, проекты</p>
+                                <span class="yt-subs">1.2M+ подписчиков</span>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com/@maboroshi/videos" target="_blank" class="yt-card">
+                            <div class="yt-avatar">🎯</div>
+                            <div class="yt-info">
+                                <h4>Maboroshi</h4>
+                                <p>Python проекты за 10 минут</p>
+                                <span class="yt-subs">500K+ подписчиков</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips & Tricks Section -->
+    <section id="tips" class="tips-tricks-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">💡 Советы</span>
+                <h2 class="section-title">Лайфхаки для обучения</h2>
+            </div>
+            
+            <div class="tricks-grid">
+                <div class="trick-card">
+                    <div class="trick-icon">🎯</div>
+                    <h4>Правило 20 минут</h4>
+                    <p>Лучше учиться 20 минут каждый день, чем 3 часа раз в неделю. Регулярность > интенсивность.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">🔨</div>
+                    <h4>Учись на проектах</h4>
+                    <p>Теория без практики забывается. Сразу применяй знания в мини-проекте.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">🐛</div>
+                    <h4>Отлаживай сам</h4>
+                    <p>Не копируй решение сразу. Попробуй найти баг сам — это лучшее обучение.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">📖</div>
+                    <h4>Читай чужой код</h4>
+                    <p>GitHub полон отличного кода. Изучай как пишут профи — учись на примерах.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">✍️</div>
+                    <h4>Веди заметки</h4>
+                    <p>Notion, Obsidian или простой .md файл. Записывай, что узнал — запомнишь лучше.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">👥</div>
+                    <h4>Найди комьюнити</h4>
+                    <p>Telegram-чаты, Discord серверы. Вопросы, помощь, мотивация от единомышленников.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">🏃</div>
+                    <h4>Не застревай</h4>
+                    <p>Не понял тему? Пропусти, вернись позже. Иногда нужно сначала увидеть всю картину.</p>
+                </div>
+                
+                <div class="trick-card">
+                    <div class="trick-icon">🎮</div>
+                    <h4>Геймифицируй</h4>
+                    <p>Codewars ранги, GitHub streak, Leetcode badges — превращай обучение в игру.</p>
+                </div>
+            </div>
+            
+            <!-- Python One-Liners -->
+            <div class="oneliners-section">
+                <h3>🐍 Полезные Python однострочники</h3>
+                <div class="oneliners-grid">
+                    <div class="oneliner">
+                        <code>numbers = [x**2 for x in range(10)]</code>
+                        <span>List comprehension — квадраты чисел</span>
+                    </div>
+                    <div class="oneliner">
+                        <code>data = {k: v for k, v in zip(keys, values)}</code>
+                        <span>Dict comprehension из двух списков</span>
+                    </div>
+                    <div class="oneliner">
+                        <code>result = value if condition else other</code>
+                        <span>Тернарный оператор</span>
+                    </div>
+                    <div class="oneliner">
+                        <code>flat = [x for row in matrix for x in row]</code>
+                        <span>Выравнивание вложенного списка</span>
+                    </div>
+                    <div class="oneliner">
+                        <code>unique = list(set(items))</code>
+                        <span>Убрать дубликаты из списка</span>
+                    </div>
+                    <div class="oneliner">
+                        <code>reversed_str = text[::-1]</code>
+                        <span>Перевернуть строку</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Частые вопросы</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Сколько времени нужно, чтобы выучить Python?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Основы (переменные, циклы, функции):</strong> 2-4 недели при ежедневных занятиях по 1-2 часа.<br><br>
+                        <strong>Уверенный уровень:</strong> 3-6 месяцев. Сможешь писать скрипты, работать с API, делать простые проекты.<br><br>
+                        <strong>Junior-разработчик:</strong> 6-12 месяцев интенсивного обучения с практикой и pet-проектами.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Какую версию Python учить?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Только <strong>Python 3</strong>! Python 2 устарел и не поддерживается с 2020 года. Скачивай последнюю версию Python 3.11+ с <a href="https://python.org" target="_blank">python.org</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Какой редактор/IDE выбрать?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Для начинающих:</strong> VS Code с расширением Python — бесплатно, легко, достаточно функционала.<br><br>
+                        <strong>Для серьезной разработки:</strong> PyCharm Community (бесплатно) или Professional — лучшая IDE для Python.<br><br>
+                        <strong>Для Data Science:</strong> Jupyter Notebook или Google Colab.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Нужна ли математика для Python?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Для веб-разработки и автоматизации:</strong> базовая математика (арифметика, логика).<br><br>
+                        <strong>Для Data Science и ML:</strong> линейная алгебра, статистика, теория вероятностей. Но можно изучать параллельно с Python.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>С чего начать если совсем ноль?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>1. Установи Python с <a href="https://python.org" target="_blank">python.org</a><br>
+                        2. Установи VS Code<br>
+                        3. Пройди курс <a href="https://stepik.org/course/58852" target="_blank">"Поколение Python" на Stepik</a> — бесплатно, на русском, с задачами<br>
+                        4. Параллельно смотри видео <a href="https://www.youtube.com/playlist?list=PLlWXhlUMyooawilqK4lPXRvxtbYiw34S8" target="_blank">selfedu на YouTube</a><br>
+                        5. Решай задачи на <a href="https://codewars.com" target="_blank">Codewars</a></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Платные курсы лучше бесплатных?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Не всегда!</strong> Бесплатные курсы (Stepik, CS50, freeCodeCamp) зачастую качественнее платных.<br><br>
+                        <strong>Плюсы платных:</strong> структура, менторство, сертификат, помощь с трудоустройством.<br><br>
+                        <strong>Совет:</strong> начни с бесплатных. Если нужна структура и мотивация — рассмотри Яндекс.Практикум или Udemy курсы по скидке ($10-15).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Реально ли найти работу без опыта?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Да, но нужны:</strong><br>
+                        • 2-3 проекта на GitHub (pet-проекты)<br>
+                        • Решенные задачи на LeetCode/Codewars<br>
+                        • Понимание Git, SQL, основ веб или Data Science<br>
+                        • Готовность к стажировкам и junior-позициям<br><br>
+                        <strong>Зарплаты Junior в 2025:</strong> 70-120k₽ в регионах, 100-180k₽ в Москве.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="container">
+            <h2>Готов начать путь в Python? 🚀</h2>
+            <p>Всё что нужно — начать. Первый шаг уже сделан — ты здесь!</p>
+            <div class="cta-actions">
+                <a href="#roadmap" class="btn btn-primary btn-lg">
+                    Начать с Roadmap
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="https://stepik.org/course/58852" target="_blank" class="btn btn-ghost btn-lg">
+                    Пройти первый курс
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">🐍</span>
+                        <span>PythonMaster</span>
+                    </a>
+                    <p>Полный гайд по изучению Python. Все лучшие ресурсы в одном месте.</p>
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/ru_python" target="_blank" aria-label="Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </a>
+                        <a href="https://discord.gg/python" target="_blank" aria-label="Discord">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="https://stepik.org/course/58852" target="_blank">Stepik: Начинающим</a></li>
+                        <li><a href="https://cs50.harvard.edu/python/" target="_blank">Harvard CS50</a></li>
+                        <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy</a></li>
+                        <li><a href="https://realpython.com/" target="_blank">Real Python</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Практика</h4>
+                    <ul>
+                        <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
+                        <li><a href="https://www.codewars.com/" target="_blank">Codewars</a></li>
+                        <li><a href="https://www.hackerrank.com/" target="_blank">HackerRank</a></li>
+                        <li><a href="https://exercism.org/tracks/python" target="_blank">Exercism</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Ресурсы</h4>
+                    <ul>
+                        <li><a href="https://docs.python.org/3/" target="_blank">Python Docs</a></li>
+                        <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                        <li><a href="https://habr.com/ru/hub/python/" target="_blank">Хабр Python</a></li>
+                        <li><a href="https://www.python.org/" target="_blank">Python.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 PythonMaster. Все ресурсы принадлежат их авторам. Мы лишь собрали лучшее в одном месте 🐍</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
